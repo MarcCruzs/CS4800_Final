@@ -1,4 +1,4 @@
-package utils;
+package com.cppdelivery.utils;
 
 public enum DriverTimeShifts {
     FIRST_SHIFT("08:00 AM", "04:00 PM"),

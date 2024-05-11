@@ -1,5 +1,5 @@
-package main;
-import utils.*;
+package com.cppdelivery.main;
+import com.cppdelivery.utils.*;
 public class Main {
     public static void main(String[] args) {
         DriverTimeShifts shift1 = DriverTimeShifts.FIRST_SHIFT;
