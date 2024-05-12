@@ -10,7 +10,7 @@ public class ItalianRestaurant extends Restaurant {
     }
     @Override
     protected void setupMenu() {
-        Meal pastaBolognese = new Meal("Pasta Bolognese", new Carb.Pasta(), new Protein.Beef(), new Fat.OliveOil());
+        Meal pastaBolognese = new Meal("Pasta Bolognese", 40, new Carb.Pasta(), new Protein.Beef(), new Fat.OliveOil());
         this.addItem(pastaBolognese);
     }
 }
