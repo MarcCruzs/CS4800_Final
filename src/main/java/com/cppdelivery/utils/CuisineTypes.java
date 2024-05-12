@@ -1,9 +1,9 @@
 package com.cppdelivery.utils;
 
-public enum Counties {
-    LA,
-    ORANGE,
-    SAN_BERNARDINO;
+public enum CuisineTypes {
+    MEXICAN,
+    AMERICAN,
+    ITALIAN;
 
     @Override
     public String toString() {
