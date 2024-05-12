@@ -8,6 +8,7 @@ public class Customer {
     private String customerCounty;
     private List<String> customerDietaryRestrictions;
 
+    //
     public Customer(String customerName, String customerAddress, String customerCounty){
         this.customerName = customerName;
         this.customerAddress = customerAddress;
@@ -35,7 +36,6 @@ public class Customer {
     public void addCustomerDietaryRestrictions(String dietaryRestrictions) {
         customerDietaryRestrictions.add(dietaryRestrictions);
     }
-
 
 
 }

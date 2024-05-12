@@ -1,4 +1,7 @@
 package com.cppdelivery.models;
 
-public interface Restaurant {
+
+
+public class Restaurant {
+
 }

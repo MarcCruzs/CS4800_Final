@@ -4,6 +4,7 @@ package com.cppdelivery.models;
 
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,8 @@ public class Order {
     private final LocalDateTime orderCreationTime;
     private LocalDateTime orderPickUpTime;
     private LocalDateTime orderDeliveredTime;
+
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     public Order(Restaurant restaurant, Customer customer, Driver driver, List<String> foodItemList, LocalDateTime orderCreationTime){
         this.restaurant = restaurant;
@@ -44,13 +47,19 @@ public class Order {
     public List<String> getFoodItemList(){
         return foodItemList;
     }
-    public LocalDateTime getOrderCreationTime(){
-        return orderCreationTime;
+    public String getOrderCreationTimeString(){
+        return orderCreationTime.format(formatter);
     }
-    public LocalDateTime getOrderPickUpTime(){
-        return orderPickUpTime;
+    public String getOrderPickUpTimeString(){
+        if(orderPickUpTime != null)
+            return orderPickUpTime.format(formatter);
+        else
+            return "Not picked up yet";
     }
-    public LocalDateTime getOrderDeliveredTime(){
-        return orderDeliveredTime;
+    public String getOrderDeliveredTimeString(){
+        if(orderDeliveredTime != null)
+            return orderDeliveredTime.format(formatter);
+        else
+            return "Not delivered up yet";
     }
 }
