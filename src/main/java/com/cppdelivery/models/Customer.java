@@ -29,7 +29,10 @@ public class Customer {
     }
 
     public List<String> getCustomerDietaryRestrictions() {
-        return customerDietaryRestrictions;
+        if(customerDietaryRestrictions != null)
+            return customerDietaryRestrictions;
+         else
+            return new ArrayList<>();
     }
 
     // Method to add dietary restrictions

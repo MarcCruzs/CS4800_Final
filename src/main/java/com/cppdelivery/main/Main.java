@@ -49,16 +49,21 @@ public class Main {
         List<String> foodItems = new ArrayList<>();
         foodItems.add("Pizza");
         foodItems.add("Burger");
-        // Add more food items as needed
 
         // Place the order
         Order order = orderServices.placeOrder(restaurant, customer, driver, foodItems);
+
+        // Add customer dietary restriction
+        order.getCustomer().addCustomerDietaryRestrictions("Nuts");
+        order.getCustomer().addCustomerDietaryRestrictions("Milk");
+
 
         // Display Order Detail
         // Change to order.getRestaurant().getRestautantName()
         System.out.println("\nOrder placed successfully!");
         System.out.println("*** Order Summary *** \nRestaurant: " + order.getRestaurant() +
                 "\nCustomer: " + order.getCustomer().getCustomerName() +
+                "\nCustomer Dietary Restriction: " + order.getCustomer().getCustomerDietaryRestrictions() +
                 "\nFood Order: " + order.getFoodItemList() +
                 "\nOrder Creation Time: " + order.getOrderCreationTimeString());
         // Change to order.getDriver().getDriverName()
