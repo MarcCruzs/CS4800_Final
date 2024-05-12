@@ -37,7 +37,7 @@ public class Main {
         OrderServices orderServices = new OrderServices(orderBuilder);
 
         // Create a restaurant
-        Restaurant restaurant = new Restaurant(/* Restaurant details */);
+        Restaurant restaurant = new Restaurant("Domenico", "5339 2nd Street", Counties.LA, RestaurantOperatingHours.FIRST_SHIFT);
 
         // Create a customer
         Customer customer = new Customer("John Doe", "123 Main St", "City");

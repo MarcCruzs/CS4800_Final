@@ -1,4 +1,5 @@
 package com.cppdelivery.models;
+import com.cppdelivery.models.restaurants.Restaurant;
 
 import java.time.LocalDateTime;
 import java.util.List;
