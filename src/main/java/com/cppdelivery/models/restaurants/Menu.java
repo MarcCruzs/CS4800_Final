@@ -1,23 +1,23 @@
 package com.cppdelivery.models.restaurants;
 
-import com.cppdelivery.models.restaurants.macronutrient.*;
+import com.cppdelivery.models.restaurants.food.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 class Menu {
-    private List<MenuItem> menuItems;
+    private List<Meal> meals;
 
     public Menu() {
-        this.menuItems = new ArrayList<>();
+        this.meals = new ArrayList<>();
     }
 
-    public void addMeal(MenuItem meal) {
-        menuItems.add(meal);
+    public void addItem(Meal item) {
+        meals.add(item);
     }
 
     public void showMenu() {
         System.out.println("Menu:");
-        menuItems.forEach(MenuItem::display);
+        meals.forEach(Meal::display);
     }
 }

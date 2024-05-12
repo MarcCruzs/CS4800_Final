@@ -1,6 +1,6 @@
 package com.cppdelivery.models.restaurants;
 
-import com.cppdelivery.models.restaurants.macronutrient.*;
+import com.cppdelivery.models.restaurants.food.*;
 import com.cppdelivery.utils.*;
 
 public class ItalianRestaurant extends Restaurant {
@@ -10,6 +10,7 @@ public class ItalianRestaurant extends Restaurant {
     }
     @Override
     protected void setupMenu() {
-        // setup menu specifics
+        Meal pastaBolognese = new Meal("Pasta Bolognese", new Carb.Pasta(), new Protein.Beef(), new Fat.OliveOil());
+        this.addItem(pastaBolognese);
     }
 }

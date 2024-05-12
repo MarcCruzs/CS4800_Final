@@ -1,7 +1,19 @@
 package com.cppdelivery.main;
 import com.cppdelivery.utils.*;
+import com.cppdelivery.models.restaurants.*;
+import com.cppdelivery.models.restaurants.food.*;
+
 public class Main {
     public static void main(String[] args) {
+        // Testing factory, restaurant creation, meals
+        MacronutrientFactory factory = MacronutrientFactory.getInstance();
+        Restaurant domenicoRestaurant = new ItalianRestaurant("Domenico", "5339 2nd Street", Counties.LA, RestaurantOperatingHours.FIRST_SHIFT);
+        domenicoRestaurant.showDetails();
+        Meal pastaBolognese = new Meal("Pasta Bolognese", new Carb.Pasta(), new Protein.Beef(), new Fat.OliveOil());
+        Meal test = factory.makeMeal(pastaBolognese, "Paleo");
+        test.display();
+
+        // Testing driver shift
         DriverTimeShifts shift1 = DriverTimeShifts.FIRST_SHIFT;
         DriverTimeShifts shift2 = DriverTimeShifts.SECOND_SHIFT;
         DriverTimeShifts shift3 = DriverTimeShifts.THIRD_SHIFT;
