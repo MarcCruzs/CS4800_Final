@@ -6,49 +6,37 @@ import com.cppdelivery.models.restaurants.*;
 import com.cppdelivery.models.restaurants.food.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        // Testing factory, restaurant creation, meals
+        // Factory to make meals
         MacronutrientFactory factory = MacronutrientFactory.getInstance();
-        Restaurant domenicoRestaurant = new ItalianRestaurant("Domenico", "5339 2nd Street", Counties.LA, RestaurantOperatingHours.FIRST_SHIFT);
-        domenicoRestaurant.showDetails();
-        Meal pastaBolognese = new Meal("Pasta Bolognese", new Carb.Pasta(), new Protein.Beef(), new Fat.OliveOil());
-        Meal test = factory.makeMeal(pastaBolognese, "Paleo");
-        test.display();
 
-        // Testing driver shift
-        DriverTimeShifts shift1 = DriverTimeShifts.FIRST_SHIFT;
-        DriverTimeShifts shift2 = DriverTimeShifts.SECOND_SHIFT;
-        DriverTimeShifts shift3 = DriverTimeShifts.THIRD_SHIFT;
+        // Testing factory
+        Meal pastaBolognese = new Meal("Pasta Bolognese", 40, new Carb.Pasta(), new Protein.Beef(), new Fat.OliveOil());
+        List<String> toppings = Arrays.asList("Truffle Oil");
+        Meal cookedPastaBolognese = factory.makeMeal(pastaBolognese, "Paleo", toppings);
+        cookedPastaBolognese.display();
 
-        System.out.println("Shift 1: " + shift1); // Output: Shift 1: FIRST SHIFT
-        System.out.println("Shift 2: " + shift2); // Output: Shift 2: SECOND SHIFT
-        System.out.println("Shift 3: " + shift3); // Output: Shift 3: THIRD SHIFT
-
-        // Accessing timing
-        System.out.println("Shift 1 Timing: " + shift1.getStartTime() + " - " + shift1.getEndTime()); // Output: Shift 1 Timing: 8:00 AM - 4:00 PM
-        System.out.println("Shift 2 Timing: " + shift2.getStartTime() + " - " + shift2.getEndTime()); // Output: Shift 2 Timing: 4:00 PM - 12:00 AM
-        System.out.println("Shift 3 Timing: " + shift3.getStartTime() + " - " + shift3.getEndTime()); // Output: Shift 3 Timing: 12:00 AM - 8:00 AM
 
         // Order Builder
         OrderBuilder orderBuilder = new OrderBuilder();
         OrderServices orderServices = new OrderServices(orderBuilder);
 
         // Create a restaurant
-        Restaurant restaurant = new Restaurant("Domenico", "5339 2nd Street", Counties.LA, RestaurantOperatingHours.FIRST_SHIFT);
+        Restaurant restaurant = new ItalianRestaurant("Domenico", "5339 2nd Street", Counties.LA, RestaurantOperatingHours.FIRST_SHIFT);
 
         // Create a customer
-        Customer customer = new Customer("John Doe", "123 Main St", "City");
+        Customer customer = new Customer("John Doe", "123 Main St", Counties.LA, DietRestrictions.PALEO);
 
         // Create a driver
         Driver driver = new Driver(/* Driver details */);
 
         // Prepare food items list
-        List<String> foodItems = new ArrayList<>();
-        foodItems.add("Pizza");
-        foodItems.add("Burger");
+        List<Meal> foodItems = new ArrayList<>();
+        foodItems.add(cookedPastaBolognese);
         // Add more food items as needed
 
         // Place the order
@@ -59,8 +47,9 @@ public class Main {
         System.out.println("\nOrder placed successfully!");
         System.out.println("*** Order Summary *** \nRestaurant: " + order.getRestaurant() +
                 "\nCustomer: " + order.getCustomer().getCustomerName() +
-                "\nFood Order: " + order.getFoodItemList() +
                 "\nOrder Creation Time: " + order.getOrderCreationTimeString());
+        System.out.println("\nItems in order:");
+        order.displayFoodItems();
         // Change to order.getDriver().getDriverName()
         System.out.println("\n*** Delivery Detail ***:\nDriver: " + order.getDriver() +
                 "\nDelivery Address: " + order.getCustomer().getCustomerAddress() +
