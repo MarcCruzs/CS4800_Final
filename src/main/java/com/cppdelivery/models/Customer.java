@@ -1,5 +1,5 @@
 package com.cppdelivery.models;
-import com.cppdelivery.utils.Counties;
+import com.cppdelivery.utils.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,14 +8,14 @@ public class Customer {
     private String customerName;
     private String customerAddress;
     private Counties customerCounty;
-    private List<String> customerDietaryRestrictions;
+    private DietRestrictions customerDietaryRestriction;
 
     //
-    public Customer(String customerName, String customerAddress, Counties customerCounty){
+    public Customer(String customerName, String customerAddress, Counties customerCounty, DietRestrictions customerDietaryRestriction){
         this.customerName = customerName;
         this.customerAddress = customerAddress;
         this.customerCounty = customerCounty;
-        this.customerDietaryRestrictions = new ArrayList<>();
+        this.customerDietaryRestriction = customerDietaryRestriction;
     }
 
     public String getCustomerName() {
@@ -30,14 +30,7 @@ public class Customer {
         return customerCounty;
     }
 
-    public List<String> getCustomerDietaryRestrictions() {
-        return customerDietaryRestrictions;
+    public DietRestrictions getcustomerDietaryRestriction() {
+        return customerDietaryRestriction;
     }
-
-    // Method to add dietary restrictions
-    public void addCustomerDietaryRestrictions(String dietaryRestrictions) {
-        customerDietaryRestrictions.add(dietaryRestrictions);
-    }
-
-
 }
