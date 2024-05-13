@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-    private final Restaurant restaurant;
-    private final Customer customer;
-    private final Driver driver;
+    private Restaurant restaurant;
+    private Customer customer;
+    private Driver driver;
     private final List<Meal> foodItemList;
-    private final LocalDateTime orderCreationTime;
+    private LocalDateTime orderCreationTime;
     private LocalDateTime orderPickUpTime;
     private LocalDateTime orderDeliveredTime;
 
@@ -72,5 +72,33 @@ public class Order {
             return orderDeliveredTime.format(formatter);
         else
             return "Not delivered up yet";
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
+
+    public LocalDateTime getOrderCreationTime() {
+        return orderCreationTime;
+    }
+
+    public void setOrderCreationTime(LocalDateTime orderCreationTime) {
+        this.orderCreationTime = orderCreationTime;
+    }
+
+    public LocalDateTime getOrderPickUpTime() {
+        return orderPickUpTime;
+    }
+
+    public LocalDateTime getOrderDeliveredTime() {
+        return orderDeliveredTime;
     }
 }

@@ -1,4 +1,5 @@
 package com.cppdelivery.models;
+import com.cppdelivery.services.DeliveryServices;
 import com.cppdelivery.utils.*;
 
 import java.util.ArrayList;
@@ -9,6 +10,9 @@ public class Customer {
     private String customerAddress;
     private Counties customerCounty;
     private DietRestrictions customerDietaryRestriction;
+    private DeliveryServices CPPDeliveryServices;
+
+
 
     //
     public Customer(String customerName, String customerAddress, Counties customerCounty, DietRestrictions customerDietaryRestriction){
@@ -16,6 +20,7 @@ public class Customer {
         this.customerAddress = customerAddress;
         this.customerCounty = customerCounty;
         this.customerDietaryRestriction = customerDietaryRestriction;
+        this.CPPDeliveryServices = DeliveryServices.getInstance();
     }
 
     public String getCustomerName() {
@@ -32,5 +37,9 @@ public class Customer {
 
     public DietRestrictions getcustomerDietaryRestriction() {
         return customerDietaryRestriction;
+    }
+
+    public void register(){
+        CPPDeliveryServices.registerCustomer(this);
     }
 }
