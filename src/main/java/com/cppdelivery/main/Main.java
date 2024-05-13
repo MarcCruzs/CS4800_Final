@@ -40,10 +40,10 @@ public class Main {
         Restaurant restaurant = new Restaurant("Domenico", "5339 2nd Street", Counties.LA, RestaurantOperatingHours.FIRST_SHIFT);
 
         // Create a customer
-        Customer customer = new Customer("John Doe", "123 Main St", "City");
+        Customer customer = new Customer("John Doe", "123 Main St", Counties.LA);
 
         // Create a driver
-        Driver driver = new Driver(/* Driver details */);
+        Driver driver = new Driver("George", "456 that street", Counties.LA , DriverTimeShifts.FIRST_SHIFT);
 
         // Prepare food items list
         List<String> foodItems = new ArrayList<>();

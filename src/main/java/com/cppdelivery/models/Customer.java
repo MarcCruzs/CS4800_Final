@@ -1,15 +1,17 @@
 package com.cppdelivery.models;
+import com.cppdelivery.utils.Counties;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
     private String customerName;
     private String customerAddress;
-    private String customerCounty;
+    private Counties customerCounty;
     private List<String> customerDietaryRestrictions;
 
     //
-    public Customer(String customerName, String customerAddress, String customerCounty){
+    public Customer(String customerName, String customerAddress, Counties customerCounty){
         this.customerName = customerName;
         this.customerAddress = customerAddress;
         this.customerCounty = customerCounty;
@@ -24,7 +26,7 @@ public class Customer {
         return customerAddress;
     }
 
-    public String getCustomerCounty() {
+    public Counties getCustomerCounty() {
         return customerCounty;
     }
 
