@@ -37,13 +37,10 @@ public class Meal implements MealComponent {
     }
     @Override
     public void display() {
-        // Display the name and price of the dish
-        System.out.println("Name: " + this.name);
-        System.out.println("Price: $" + this.price);
-        // Display each macronutrient
-        System.out.println("Carb: " + carb.getName());
-        System.out.println("Protein: " + protein.getName());
-        System.out.println("Fat: " + fat.getName());
+        System.out.println("$" + this.price + " " + this.name
+                + " [Carb: " + carb.getName()
+                + "; Protein: " + protein.getName()
+                + "; Fat: " + fat.getName() + "]");
         System.out.println("--------------------------------");
     }
 }

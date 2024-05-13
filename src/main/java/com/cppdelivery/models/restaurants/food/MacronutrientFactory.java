@@ -1,5 +1,7 @@
 package com.cppdelivery.models.restaurants.food;
 
+import com.cppdelivery.utils.*;
+
 import java.util.List;
 
 public class MacronutrientFactory {
@@ -12,7 +14,7 @@ public class MacronutrientFactory {
         return factory;
     }
 
-    public Meal makeMeal(Meal meal, String dietPlan, List<String> toppings) {
+    public Meal makeMeal(Meal meal, DietRestrictions dietPlan, List<String> toppings) {
         CarbFactory carbFactory = CarbFactory.getInstance();
         ProteinFactory proteinFactory = ProteinFactory.getInstance();
         FatFactory fatFactory = FatFactory.getInstance();
@@ -23,7 +25,7 @@ public class MacronutrientFactory {
 
         Meal basicMeal = new Meal(meal.getName() + " " + dietPlan, meal.getPrice(), carb, protein, fat);
 
-        // Decorate the meal with toppings by modifying the name
+        // Decorate the meal with toppings
         for (String topping : toppings) {
             switch (topping.toLowerCase()) {
                 case "truffle oil":

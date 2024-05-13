@@ -14,13 +14,6 @@ public class Main {
         // Factory to make meals
         MacronutrientFactory factory = MacronutrientFactory.getInstance();
 
-        // Testing factory
-        Meal pastaBolognese = new Meal("Pasta Bolognese", 40, new Carb.Pasta(), new Protein.Beef(), new Fat.OliveOil());
-        List<String> toppings = Arrays.asList("Truffle Oil");
-        Meal cookedPastaBolognese = factory.makeMeal(pastaBolognese, "Paleo", toppings);
-        cookedPastaBolognese.display();
-
-
         // Order Builder
         OrderBuilder orderBuilder = new OrderBuilder();
         OrderServices orderServices = new OrderServices(orderBuilder);
@@ -36,6 +29,11 @@ public class Main {
 
         // Prepare food items list
         List<Meal> foodItems = new ArrayList<>();
+        Meal pastaBolognese = new Meal("Pasta Bolognese", 40, new Carb.Pasta(), new Protein.Beef(), new Fat.OliveOil());
+        List<String> toppings = Arrays.asList("Truffle Oil");
+        List<String> emptyToppings = new ArrayList<>();
+        Meal cookedPastaBolognese = factory.makeMeal(pastaBolognese, customer.getcustomerDietaryRestriction(), toppings);
+
         foodItems.add(cookedPastaBolognese);
         // Add more food items as needed
 
@@ -43,10 +41,9 @@ public class Main {
         Order order = orderServices.placeOrder(restaurant, customer, driver, foodItems);
 
         // Display Order Detail
-        // Change to order.getRestaurant().getRestautantName()
         System.out.println("\nOrder placed successfully!");
         System.out.println("*** Order Summary ***");
-        System.out.printf("Restaurant: %s\n", order.getRestaurant());
+        System.out.printf("Restaurant: %s\n", order.getRestaurant().getName());
         System.out.printf("Customer: %s\n", order.getCustomer().getCustomerName());
         System.out.printf("Order Creation Time: %s\n", order.getOrderCreationTimeString());
         System.out.printf("Total Price: %.2f\n", order.getTotalPrice()); // Assuming the price is a double

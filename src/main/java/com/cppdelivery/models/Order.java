@@ -36,7 +36,6 @@ public class Order {
     public void setOrderDeliveredTime(LocalDateTime orderDeliveredTime){
         this.orderDeliveredTime = orderDeliveredTime;
     }
-
     public Restaurant getRestaurant(){
         return restaurant;
     }

@@ -1,6 +1,7 @@
 package com.cppdelivery.utils;
 
 public enum DietRestrictions {
+    NO_RESTRICTION,
     PALEO,
     VEGAN,
     NUT_ALLERGY;
