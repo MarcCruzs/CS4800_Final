@@ -21,7 +21,13 @@ public class DeliveryServices {
         this.registeredRestaurants = new ArrayList<>();
     }
 
-    public boolean isDeliveryPossibleForOrder(Order order){
+    public void placeOrder(Order order){
+        if (!deliveryPossibleForOrder(order)){
+
+        }
+    }
+
+    public boolean deliveryPossibleForOrder(Order order){
         Driver deliveryDriver = order.getDriver();
         ArrayList<Driver> nearbyDrivers = findNearbyDrivers(order.getCustomer().getCustomerCounty());
 

@@ -1,0 +1,107 @@
+@startuml
+
+enum Counties {
+    LA
+    ORANGE
+    SAN_BERNARDINO
+}
+
+class CPPFoodDelivery {
+    - restaurants: ArrayList<Restaurant>
+    - customers: ArrayList<Customer>
+    - drivers: ArrayList<Driver>
+    + registerRestaurant(restaurant: Restaurant): void
+    + registerCustomer(customer: Customer): void
+    + registerDriver(driver: Driver): void
+    + placeOrder(customer: Customer, order: Order): void
+    - isDeliveryPossibleForOrder(order: Order): boolean
+    - findNearbyRegisteredDrivers(county: Counties): ArrayList<Driver>
+    - isRegisteredRestaurantAvailable(restaurant: Restaurant): boolean
+
+    - fulfillOrder(restaurant: Restaurant, order: Order)
+    - assignDriver(order: Order): Driver
+    - deliverOrder(driver: Driver, order: Order)
+}
+
+class Restaurant {
+    - name: String
+    - address: String
+    - county: County
+    - operatingHours: String
+    - cuisineType: String
+    - menu: Menu
+    - preparationTime: Duration
+    + register()
+}
+
+class Customer {
+    - name: String
+    - address: String
+    + register()
+    + placeOrder(order: Order)
+}
+
+class Driver {
+    - name: String
+    - address: String
+    - county: County
+    - timeShift: TimeShift
+    - deliveryTime: Double
+    + register()
+    + isDriverAvailable(time: String): boolean
+}
+
+class Menu {
+    - mealOptions: Set<Meal>
+    + addMeal(meal: Meal)
+    + removeMeal(meal: Meal)
+}
+
+class Meal {
+    - name: String
+    - fats: String
+    - carbs: String
+    - protein: String
+    - foodItems: Set<FoodItem>
+    + modifyMeal()
+}
+
+class FoodItem {
+    - name: String
+    - modifications: String
+}
+
+enum TimeShift {
+    FIRST_SHIFT
+    SECOND_SHIFT
+    THIRD_SHIFT
+}
+
+class Order {
+    - restaurant: Restaurant
+    - customer: Customer
+    - driver: Driver
+    - orderCreationTime: DateTime
+    - orderPickupTime: DateTime
+    - deliveredTime: DateTime
+    - dietaryRestriction: String
+    - foodItems: List<FoodItem>
+}
+
+Order o-- CPPFoodDelivery: <contributes>
+Order o-- Customer: <contributes>
+
+CPPFoodDelivery o-- Restaurant: <mediates>
+CPPFoodDelivery o-- Customer: <mediates>
+CPPFoodDelivery o-- Driver: <mediates>
+
+Restaurant o-- Counties: county
+Driver o-- Counties: county
+Customer o-- Counties: county
+
+Menu "1" o-- "*" Meal: mealOptions
+Meal "1" o-- "*" FoodItem: foodItems
+
+Driver -- TimeShift : timeShift
+
+@enduml

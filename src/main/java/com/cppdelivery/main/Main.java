@@ -32,7 +32,7 @@ public class Main {
         Customer customer = new Customer("John Doe", "123 Main St", Counties.LA, DietRestrictions.PALEO);
 
         // Create a driver
-        Driver driver = new Driver(/* Driver details */);
+        Driver driver = new Driver("George", "456 That Place", Counties.LA, DriverTimeShifts.FIRST_SHIFT);
 
         // Prepare food items list
         List<Meal> foodItems = new ArrayList<>();
