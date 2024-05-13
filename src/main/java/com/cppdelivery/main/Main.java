@@ -14,13 +14,6 @@ public class Main {
         // Factory to make meals
         MacronutrientFactory factory = MacronutrientFactory.getInstance();
 
-        // Testing factory
-        Meal pastaBolognese = new Meal("Pasta Bolognese", 40, new Carb.Pasta(), new Protein.Beef(), new Fat.OliveOil());
-        List<String> toppings = Arrays.asList("Truffle Oil");
-        Meal cookedPastaBolognese = factory.makeMeal(pastaBolognese, DietRestrictions.PALEO, toppings);
-        cookedPastaBolognese.display();
-
-
         // Order Builder
         OrderBuilder orderBuilder = new OrderBuilder();
         OrderServices orderServices = new OrderServices(orderBuilder);
@@ -36,6 +29,11 @@ public class Main {
 
         // Prepare food items list
         List<Meal> foodItems = new ArrayList<>();
+        Meal pastaBolognese = new Meal("Pasta Bolognese", 40, new Carb.Pasta(), new Protein.Beef(), new Fat.OliveOil());
+        List<String> toppings = Arrays.asList("Truffle Oil");
+        List<String> emptyToppings = new ArrayList<>();
+        Meal cookedPastaBolognese = factory.makeMeal(pastaBolognese, customer.getcustomerDietaryRestriction(), toppings);
+
         foodItems.add(cookedPastaBolognese);
         // Add more food items as needed
 

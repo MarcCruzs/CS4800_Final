@@ -30,14 +30,23 @@ public class CarbFactory {
                 if (defaultCarb.getName().equalsIgnoreCase("Rice")) {
                     return new Carb.Quinoa();
                 }
+                if (defaultCarb.getName().equalsIgnoreCase("Bread") || defaultCarb.getName().equalsIgnoreCase("Tortilla")) {
+                    return new Carb.LettuceWrap();
+                }
+                if (defaultCarb.getName().equalsIgnoreCase("Flour")) {
+                    return new Carb.GlutenFreeFlour();
+                }
                 else {
                     return defaultCarb;
                 }
             case VEGAN:
-                // You may need a specific case for vegan diet
-                return defaultCarb;
+                if (defaultCarb.getName().equalsIgnoreCase("Pasta")) {
+                    return new Carb.ZucchiniNoodles();
+                }
+                else {
+                    return defaultCarb;
+                }
             case NUT_ALLERGY:
-                // You may need a specific case for nut allergy diet
                 return defaultCarb;
             default:
                 System.out.println("Invalid diet plan.");

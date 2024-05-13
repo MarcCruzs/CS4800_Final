@@ -17,25 +17,24 @@ public class ProteinFactory {
     // Method to generate a Protein based on the given diet plan
     public Protein createProtein(DietRestrictions dietPlan, Protein defaultProtein){
         if (dietPlan == null || defaultProtein == null) {
-            System.out.println("Diet plan or default fat cannot be null.");
+            System.out.println("Diet plan or default protein cannot be null.");
             return null;
         }
         switch (dietPlan) {
             case NO_RESTRICTION:
                 return defaultProtein;
             case PALEO:
-                if (defaultProtein.getName().equalsIgnoreCase("")) {
-                } else {
-                    return defaultProtein;
-                }
+                return defaultProtein;
             case VEGAN:
-                if (defaultProtein.getName().equalsIgnoreCase("Chicken") || defaultProtein.getName().equalsIgnoreCase("Beef")) {
+                if (defaultProtein.getName().equalsIgnoreCase("Chicken")
+                        || defaultProtein.getName().equalsIgnoreCase("Beef")
+                        || defaultProtein.getName().equalsIgnoreCase("Egg")
+                ) {
                     return new Protein.Tofu();
                 } else {
                     return defaultProtein;
                 }
             case NUT_ALLERGY:
-                // You may need a specific case for nut allergy diet
                 return defaultProtein;
             default:
                 System.out.println("Invalid diet plan.");

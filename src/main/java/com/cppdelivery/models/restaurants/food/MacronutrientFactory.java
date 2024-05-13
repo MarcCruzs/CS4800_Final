@@ -25,7 +25,7 @@ public class MacronutrientFactory {
 
         Meal basicMeal = new Meal(meal.getName() + " " + dietPlan, meal.getPrice(), carb, protein, fat);
 
-        // Decorate the meal with toppings by modifying the name
+        // Decorate the meal with toppings
         for (String topping : toppings) {
             switch (topping.toLowerCase()) {
                 case "truffle oil":
