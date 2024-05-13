@@ -45,15 +45,19 @@ public class Main {
         // Display Order Detail
         // Change to order.getRestaurant().getRestautantName()
         System.out.println("\nOrder placed successfully!");
-        System.out.println("*** Order Summary *** \nRestaurant: " + order.getRestaurant() +
-                "\nCustomer: " + order.getCustomer().getCustomerName() +
-                "\nOrder Creation Time: " + order.getOrderCreationTimeString());
-        System.out.println("\nItems in order:");
+        System.out.println("*** Order Summary ***");
+        System.out.printf("Restaurant: %s\n", order.getRestaurant());
+        System.out.printf("Customer: %s\n", order.getCustomer().getCustomerName());
+        System.out.printf("Order Creation Time: %s\n", order.getOrderCreationTimeString());
+        System.out.printf("Total Price: %.2f\n", order.getTotalPrice()); // Assuming the price is a double
+        System.out.println("Items in order:");
         order.displayFoodItems();
-        // Change to order.getDriver().getDriverName()
-        System.out.println("\n*** Delivery Detail ***:\nDriver: " + order.getDriver() +
-                "\nDelivery Address: " + order.getCustomer().getCustomerAddress() +
-                "\nOrder Pick Up Time: " + order.getOrderPickUpTimeString() +
-                "\nOrder Deliver Time: " + order.getOrderDeliveredTimeString());
+
+        System.out.println("\n*** Delivery Detail ***");
+        System.out.printf("Driver: %s\n", order.getDriver()); // Corrected to getDriverName()
+        System.out.printf("Delivery Address: %s\n", order.getCustomer().getCustomerAddress());
+        System.out.printf("Order Pick Up Time: %s\n", order.getOrderPickUpTimeString());
+        System.out.printf("Order Deliver Time: %s\n", order.getOrderDeliveredTimeString());
+
     }
 }

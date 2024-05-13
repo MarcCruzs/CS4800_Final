@@ -52,6 +52,13 @@ public class Order {
     public void displayFoodItems() {
         foodItemList.forEach(Meal::display);
     }
+    public double getTotalPrice() {
+        double totalPrice = 0.0;
+        for (Meal meal : foodItemList) {
+            totalPrice += meal.getPrice();
+        }
+        return totalPrice;
+    }
     public String getOrderCreationTimeString(){
         return orderCreationTime.format(formatter);
     }
