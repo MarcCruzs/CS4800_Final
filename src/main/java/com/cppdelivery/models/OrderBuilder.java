@@ -1,5 +1,6 @@
 package com.cppdelivery.models;
 import com.cppdelivery.models.restaurants.Restaurant;
+import com.cppdelivery.models.restaurants.food.Meal;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -8,7 +9,7 @@ public class OrderBuilder implements Builder{
     private Restaurant restaurant;
     private Customer customer;
     private Driver driver;
-    private List<String> foodItemList;
+    private List<Meal> foodItemList;
     private LocalDateTime orderCreationTime;
     private LocalDateTime orderPickUpTime;
     private LocalDateTime orderDeliveredTime;
@@ -29,7 +30,7 @@ public class OrderBuilder implements Builder{
     }
 
     @Override
-    public void setFoodItemList(List<String> foodItemList) {
+    public void setFoodItemList(List<Meal> foodItemList) {
         this.foodItemList = foodItemList;
     }
 
