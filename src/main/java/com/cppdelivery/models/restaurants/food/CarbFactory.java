@@ -1,7 +1,6 @@
 package com.cppdelivery.models.restaurants.food;
 
-import java.util.concurrent.ThreadLocalRandom;
-
+import com.cppdelivery.utils.*;
 public class CarbFactory {
     private static CarbFactory carbFactory;
     private CarbFactory(){}
@@ -15,35 +14,43 @@ public class CarbFactory {
     }
 
     // Method to generate a Carb based on the given diet plan
-    public Carb createCarb(String dietPlan, Carb defaultCarb){
+    public Carb createCarb(DietRestrictions dietPlan, Carb defaultCarb){
         if (dietPlan == null || defaultCarb == null) {
             System.out.println("Diet plan or default carb cannot be null.");
             return null;
         }
 
-        switch (dietPlan.toLowerCase()) {
-            case "no restriction":
+        switch (dietPlan) {
+            case NO_RESTRICTION:
                 return defaultCarb;
-            case "paleo":
+            case PALEO:
                 if (defaultCarb.getName().equalsIgnoreCase("Pasta")) {
                     return new Carb.ZucchiniNoodles();
-                } else {
+                }
+                if (defaultCarb.getName().equalsIgnoreCase("Rice")) {
+                    return new Carb.Quinoa();
+                }
+                if (defaultCarb.getName().equalsIgnoreCase("Bread") || defaultCarb.getName().equalsIgnoreCase("Tortilla")) {
+                    return new Carb.LettuceWrap();
+                }
+                if (defaultCarb.getName().equalsIgnoreCase("Flour")) {
+                    return new Carb.GlutenFreeFlour();
+                }
+                else {
                     return defaultCarb;
                 }
-            case "vegan":
-                // You may need a specific case for vegan diet
-                return defaultCarb;
-            case "nut allergy":
-                // You may need a specific case for nut allergy diet
+            case VEGAN:
+                if (defaultCarb.getName().equalsIgnoreCase("Pasta")) {
+                    return new Carb.ZucchiniNoodles();
+                }
+                else {
+                    return defaultCarb;
+                }
+            case NUT_ALLERGY:
                 return defaultCarb;
             default:
                 System.out.println("Invalid diet plan.");
                 return null;
         }
-    }
-
-    // Method to select a random Carb from the given array of choices
-    public Carb getRandomCarb(Carb[] choices){
-        return choices[ThreadLocalRandom.current().nextInt(choices.length)];
     }
 }

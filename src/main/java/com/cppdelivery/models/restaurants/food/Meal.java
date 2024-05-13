@@ -1,14 +1,15 @@
 package com.cppdelivery.models.restaurants.food;
 
-public class Meal {
+public class Meal implements MealComponent {
     final private String name;
     final private Carb carb;
     final private Protein protein;
     final private Fat fat;
-
+    private double price;
     // Constructor
-    public Meal(String name, Carb carb, Protein protein, Fat fat) {
+    public Meal(String name, double price, Carb carb, Protein protein, Fat fat) {
         this.name = name;
+        this.price = price;
         this.carb = carb;
         this.protein = protein;
         this.fat = fat;
@@ -26,13 +27,20 @@ public class Meal {
     public Fat getFat() {
         return this.fat;
     }
+
+    public double getPrice() {
+        return this.price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    @Override
     public void display() {
-        // Display the name of the dish with a separator
-        System.out.println("Name: " + this.name);
-        // Display each macronutrient
-        System.out.println("Carb: " + carb.getName());
-        System.out.println("Protein: " + protein.getName());
-        System.out.println("Fat: " + fat.getName());
+        System.out.println("$" + this.price + " " + this.name
+                + " [Carb: " + carb.getName()
+                + "; Protein: " + protein.getName()
+                + "; Fat: " + fat.getName() + "]");
         System.out.println("--------------------------------");
     }
 }

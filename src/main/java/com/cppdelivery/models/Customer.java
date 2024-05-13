@@ -1,19 +1,21 @@
 package com.cppdelivery.models;
+import com.cppdelivery.utils.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
     private String customerName;
     private String customerAddress;
-    private String customerCounty;
-    private List<String> customerDietaryRestrictions;
+    private Counties customerCounty;
+    private DietRestrictions customerDietaryRestriction;
 
     //
-    public Customer(String customerName, String customerAddress, String customerCounty){
+    public Customer(String customerName, String customerAddress, Counties customerCounty, DietRestrictions customerDietaryRestriction){
         this.customerName = customerName;
         this.customerAddress = customerAddress;
         this.customerCounty = customerCounty;
-        this.customerDietaryRestrictions = new ArrayList<>();
+        this.customerDietaryRestriction = customerDietaryRestriction;
     }
 
     public String getCustomerName() {
@@ -24,21 +26,11 @@ public class Customer {
         return customerAddress;
     }
 
-    public String getCustomerCounty() {
+    public Counties getCustomerCounty() {
         return customerCounty;
     }
 
-    public List<String> getCustomerDietaryRestrictions() {
-        if(customerDietaryRestrictions != null)
-            return customerDietaryRestrictions;
-         else
-            return new ArrayList<>();
+    public DietRestrictions getcustomerDietaryRestriction() {
+        return customerDietaryRestriction;
     }
-
-    // Method to add dietary restrictions
-    public void addCustomerDietaryRestrictions(String dietaryRestrictions) {
-        customerDietaryRestrictions.add(dietaryRestrictions);
-    }
-
-
 }

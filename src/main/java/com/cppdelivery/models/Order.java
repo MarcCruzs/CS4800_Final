@@ -2,6 +2,7 @@ package com.cppdelivery.models;
 // Min
 // Use Builder Class-- create OrderBuilder
 import com.cppdelivery.models.restaurants.Restaurant;
+import com.cppdelivery.models.restaurants.food.Meal;
 
 
 import java.time.LocalDateTime;
@@ -13,14 +14,14 @@ public class Order {
     private final Restaurant restaurant;
     private final Customer customer;
     private final Driver driver;
-    private final List<String> foodItemList;
+    private final List<Meal> foodItemList;
     private final LocalDateTime orderCreationTime;
     private LocalDateTime orderPickUpTime;
     private LocalDateTime orderDeliveredTime;
 
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-    public Order(Restaurant restaurant, Customer customer, Driver driver, List<String> foodItemList, LocalDateTime orderCreationTime){
+    public Order(Restaurant restaurant, Customer customer, Driver driver, List<Meal> foodItemList, LocalDateTime orderCreationTime){
         this.restaurant = restaurant;
         this.customer = customer;
         this.driver = driver;
@@ -35,7 +36,6 @@ public class Order {
     public void setOrderDeliveredTime(LocalDateTime orderDeliveredTime){
         this.orderDeliveredTime = orderDeliveredTime;
     }
-
     public Restaurant getRestaurant(){
         return restaurant;
     }
@@ -45,8 +45,18 @@ public class Order {
     public Driver getDriver(){
         return driver;
     }
-    public List<String> getFoodItemList(){
+    public List<Meal> getFoodItemList(){
         return foodItemList;
+    }
+    public void displayFoodItems() {
+        foodItemList.forEach(Meal::display);
+    }
+    public double getTotalPrice() {
+        double totalPrice = 0.0;
+        for (Meal meal : foodItemList) {
+            totalPrice += meal.getPrice();
+        }
+        return totalPrice;
     }
     public String getOrderCreationTimeString(){
         return orderCreationTime.format(formatter);
