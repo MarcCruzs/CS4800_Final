@@ -24,23 +24,33 @@ public class FatFactory {
             case NO_RESTRICTION:
                 return defaultFat;
             case PALEO:
-                if (defaultFat.getName().equalsIgnoreCase("Buter")) {
+                if (defaultFat.getName().equalsIgnoreCase("Butter")) { 
                     return new Fat.OliveOil();
+                }
+                if (defaultFat.getName().equalsIgnoreCase("Cheese")) {
+                    return new Fat.NutritionalYeast();
                 } else {
                     return defaultFat;
                 }
             case VEGAN:
-                if (defaultFat.getName().equalsIgnoreCase("Buter")) {
+                if (defaultFat.getName().equalsIgnoreCase("Butter")) {
                     return new Fat.OliveOil();
+                }
+                if (defaultFat.getName().equalsIgnoreCase("Cheese")) {
+                    return new Fat.NutritionalYeast();
                 } else {
                     return defaultFat;
                 }
             case NUT_ALLERGY:
-                // You may need a specific case for nut allergy diet
-                return defaultFat;
+                if (defaultFat.getName().equalsIgnoreCase("Almond")) {
+                    return new Fat.PumpkinSeed();
+                } else {
+                    return defaultFat;
+                }
             default:
                 System.out.println("Invalid diet plan.");
                 return null;
         }
     }
+
 }
