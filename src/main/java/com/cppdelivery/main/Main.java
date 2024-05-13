@@ -41,10 +41,9 @@ public class Main {
         Order order = orderServices.placeOrder(restaurant, customer, driver, foodItems);
 
         // Display Order Detail
-        // Change to order.getRestaurant().getRestautantName()
         System.out.println("\nOrder placed successfully!");
         System.out.println("*** Order Summary ***");
-        System.out.printf("Restaurant: %s\n", order.getRestaurant());
+        System.out.printf("Restaurant: %s\n", order.getRestaurant().getName());
         System.out.printf("Customer: %s\n", order.getCustomer().getCustomerName());
         System.out.printf("Order Creation Time: %s\n", order.getOrderCreationTimeString());
         System.out.printf("Total Price: %.2f\n", order.getTotalPrice()); // Assuming the price is a double

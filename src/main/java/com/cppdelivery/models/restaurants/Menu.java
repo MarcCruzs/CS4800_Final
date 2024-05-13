@@ -16,6 +16,14 @@ class Menu {
         meals.add(item);
     }
 
+    public Meal getMealByName(String name) {
+        for (Meal meal : meals) {
+            if (meal.getName().equals(name)) {
+                return meal;
+            }
+        }
+        return null;
+    }
     public void showMenu() {
         System.out.println("Menu:");
         meals.forEach(Meal::display);

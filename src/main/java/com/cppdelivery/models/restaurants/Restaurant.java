@@ -25,11 +25,16 @@ public class Restaurant {
     }
 
     protected void setupMenu() {
-        // Default menu setup can be empty or contain some common meals
     }
 
     public void addItem(Meal item) {
         this.menu.addItem(item);
+    }
+    public String getName() {
+        return name;
+    }
+    public Meal getMealByName(String mealName) {
+        return menu.getMealByName(mealName);
     }
 
     public void showDetails() {
