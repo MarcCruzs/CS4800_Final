@@ -1,5 +1,6 @@
 package com.cppdelivery.main;
 import com.cppdelivery.models.*;
+import com.cppdelivery.services.DeliveryServices;
 import com.cppdelivery.services.OrderServices;
 import com.cppdelivery.utils.*;
 import com.cppdelivery.models.restaurants.*;
@@ -18,14 +19,20 @@ public class Main {
         OrderBuilder orderBuilder = new OrderBuilder();
         OrderServices orderServices = new OrderServices(orderBuilder);
 
+        //DeliveryService
+        DeliveryServices CPPDelivery = new DeliveryServices();
+
         // Create a restaurant
         Restaurant restaurant = new ItalianRestaurant("Domenico", "5339 2nd Street", Counties.LA, RestaurantOperatingHours.FIRST_SHIFT);
+        restaurant.register();
 
         // Create a customer
         Customer customer = new Customer("John Doe", "123 Main St", Counties.LA, DietRestrictions.PALEO);
+        customer.register();
 
         // Create a driver
-        Driver driver = new Driver("George", "456 That Place", Counties.LA, DriverTimeShifts.FIRST_SHIFT);
+        Driver driver = new Driver("George", "456 That Place", 15, Counties.LA, DriverTimeShifts.FIRST_SHIFT);
+        driver.register();
 
         // Prepare food items list
         List<Meal> foodItems = new ArrayList<>();

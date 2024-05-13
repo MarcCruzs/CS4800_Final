@@ -1,7 +1,13 @@
 package com.cppdelivery.models.restaurants;
 
 import com.cppdelivery.models.restaurants.food.*;
+import com.cppdelivery.services.DeliveryServices;
 import com.cppdelivery.utils.*;
+
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
+import static com.cppdelivery.utils.TimeRangeChecker.isAvailableAtTime;
 
 public class Restaurant {
     final private String name;
@@ -10,11 +16,14 @@ public class Restaurant {
     private CuisineTypes cuisine;
     final private Counties county;
     final private RestaurantOperatingHours operatingHours;
+    private DeliveryServices CPPDeliveryServices;
+
     public Restaurant(String name, String address, Counties county, RestaurantOperatingHours operatingHours) {
         this.name = name;
         this.address = address;
         this.county = county;
         this.operatingHours = operatingHours;
+        this.CPPDeliveryServices = DeliveryServices.getInstance();
 
         this.menu = new Menu();
         setupMenu();
@@ -45,4 +54,18 @@ public class Restaurant {
         System.out.println("Operating Hours: " + operatingHours.toString());
         menu.showMenu();
     }
+
+    public RestaurantOperatingHours getOperatingHours() {
+        return operatingHours;
+    }
+
+    public boolean isRestaurantAvailable(String time) {
+        return isAvailableAtTime(time, this.operatingHours.getStartTime(), this.operatingHours.getEndTime());
+    }
+
+    public void register(){
+        CPPDeliveryServices.registerRestaurant(this);
+    }
+
+
 }

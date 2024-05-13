@@ -13,14 +13,16 @@ class CPPFoodDelivery {
     + registerRestaurant(restaurant: Restaurant): void
     + registerCustomer(customer: Customer): void
     + registerDriver(driver: Driver): void
+
     + placeOrder(customer: Customer, order: Order): void
-    - isDeliveryPossibleForOrder(order: Order): boolean
+    - searchForRegisteredRestaurant(name: String): Restaurant
+    - isCustomerRegistered(customer: Customer): boolean
+
+    - fulfillOrder(order: Order): Order
     - findNearbyRegisteredDrivers(county: Counties): ArrayList<Driver>
     - isRegisteredRestaurantAvailable(restaurant: Restaurant): boolean
 
-    - fulfillOrder(restaurant: Restaurant, order: Order)
-    - assignDriver(order: Order): Driver
-    - deliverOrder(driver: Driver, order: Order)
+    - deliverOrder(driver: Driver, order: Order): void
 }
 
 class Restaurant {
@@ -38,7 +40,7 @@ class Customer {
     - name: String
     - address: String
     + register()
-    + placeOrder(order: Order)
+    + placeOrder(order: Order, RestaurantName: String)
 }
 
 class Driver {

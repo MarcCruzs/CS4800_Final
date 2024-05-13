@@ -7,36 +7,31 @@ import com.cppdelivery.utils.DriverTimeShifts;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
+import static com.cppdelivery.utils.TimeRangeChecker.isAvailableAtTime;
+
 public class Driver {
     private String name;
     private String address;
+    private double averageDeliverTime;
     private Counties operatingCounty;
     private DriverTimeShifts operatingHours;
     private DeliveryServices CPPDeliveryServices;
 
-    public Driver(String name, String address, Counties operatingCounty, DriverTimeShifts operatingHours) {
+    public Driver(String name, String address, double averageDeliverTime, Counties operatingCounty, DriverTimeShifts operatingHours) {
         this.name = name;
         this.address = address;
+        this.averageDeliverTime = averageDeliverTime;
         this.operatingCounty = operatingCounty;
         this.operatingHours = operatingHours;
+        this.CPPDeliveryServices = DeliveryServices.getInstance();
     }
 
     public void register(){
-        System.out.println("Driver registered with name: " + name + " and address: " + address);
         CPPDeliveryServices.registerDriver(this);
     }
 
     public boolean isDriverAvailable(String time) {
-        String startTime = this.operatingHours.getStartTime();
-        String endTime = this.operatingHours.getEndTime();
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
-
-        LocalTime checkTime = LocalTime.parse(time, formatter);
-        LocalTime start = LocalTime.parse(startTime, formatter);
-        LocalTime end = LocalTime.parse(endTime, formatter);
-
-        return !checkTime.isBefore(start) && !checkTime.isAfter(end);
+        return isAvailableAtTime(time, this.operatingHours.getStartTime(), this.operatingHours.getEndTime());
     }
 
     public String getName() {
@@ -53,6 +48,14 @@ public class Driver {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public double getAverageDeliverTime() {
+        return averageDeliverTime;
+    }
+
+    public void setAverageDeliverTime(double averageDeliverTime) {
+        this.averageDeliverTime = averageDeliverTime;
     }
 
     public Counties getOperatingCounty() {
