@@ -3,7 +3,8 @@ package com.cppdelivery.utils;
 public enum CuisineTypes {
     MEXICAN,
     AMERICAN,
-    ITALIAN;
+    ITALIAN,
+    ASIAN;
 
     @Override
     public String toString() {
