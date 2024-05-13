@@ -17,10 +17,10 @@ public abstract class Protein {
             return "Beef";
         }
     }
-    public static class Lentils extends Protein {
+    public static class Tofu extends Protein {
         @Override
         public String getName() {
-            return "Lentils";
+            return "Tofu";
         }
     }
 }

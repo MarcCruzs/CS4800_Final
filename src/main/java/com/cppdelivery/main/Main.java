@@ -17,7 +17,7 @@ public class Main {
         // Testing factory
         Meal pastaBolognese = new Meal("Pasta Bolognese", 40, new Carb.Pasta(), new Protein.Beef(), new Fat.OliveOil());
         List<String> toppings = Arrays.asList("Truffle Oil");
-        Meal cookedPastaBolognese = factory.makeMeal(pastaBolognese, "Paleo", toppings);
+        Meal cookedPastaBolognese = factory.makeMeal(pastaBolognese, DietRestrictions.PALEO, toppings);
         cookedPastaBolognese.display();
 
 

@@ -3,10 +3,10 @@ package com.cppdelivery.models.restaurants.food;
 public abstract class Fat {
     public abstract String getName();
 
-    public static class Avocado extends Fat {
+    public static class Butter extends Fat {
         @Override
         public String getName() {
-            return "Avocado";
+            return "Butter";
         }
     }
 

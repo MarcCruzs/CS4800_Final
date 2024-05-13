@@ -1,6 +1,6 @@
 package com.cppdelivery.models.restaurants.food;
 
-import java.util.concurrent.ThreadLocalRandom;
+import com.cppdelivery.utils.*;
 
 public class ProteinFactory {
     private static ProteinFactory proteinFactory;
@@ -15,32 +15,31 @@ public class ProteinFactory {
     }
 
     // Method to generate a Protein based on the given diet plan
-    public Protein createProtein(String dietPlan, Protein defaultProtein){
+    public Protein createProtein(DietRestrictions dietPlan, Protein defaultProtein){
         if (dietPlan == null || defaultProtein == null) {
             System.out.println("Diet plan or default fat cannot be null.");
             return null;
         }
-        switch (dietPlan.toLowerCase()) {
-            case "no restriction":
+        switch (dietPlan) {
+            case NO_RESTRICTION:
                 return defaultProtein;
-            case "paleo":
-                if (defaultProtein.getName().equalsIgnoreCase("Pasta")) {
+            case PALEO:
+                if (defaultProtein.getName().equalsIgnoreCase("")) {
                 } else {
                     return defaultProtein;
                 }
-            case "vegan":
-                // You may need a specific case for vegan diet
-                return defaultProtein;
-            case "nut allergy":
+            case VEGAN:
+                if (defaultProtein.getName().equalsIgnoreCase("Chicken") || defaultProtein.getName().equalsIgnoreCase("Beef")) {
+                    return new Protein.Tofu();
+                } else {
+                    return defaultProtein;
+                }
+            case NUT_ALLERGY:
                 // You may need a specific case for nut allergy diet
                 return defaultProtein;
             default:
                 System.out.println("Invalid diet plan.");
                 return null;
         }
-    }
-
-    public Protein getRandomProtein(Protein[] choices){
-        return choices[ThreadLocalRandom.current().nextInt(choices.length)];
     }
 }

@@ -14,4 +14,22 @@ public abstract class Carb {
             return "Zucchini Noodles";
         }
     }
+    public static class Rice extends Carb {
+        @Override
+        public String getName() {
+            return "Rice";
+        }
+    }
+    public static class Quinoa extends Carb {
+        @Override
+        public String getName() {
+            return "Quinoa";
+        }
+    }
+    public static class Bread extends Carb {
+        @Override
+        public String getName() {
+            return "Bread";
+        }
+    }
 }
