@@ -58,7 +58,7 @@ public class Main {
         order.displayFoodItems();
 
         System.out.println("\n*** Delivery Detail ***");
-        System.out.printf("Driver: %s\n", order.getDriver()); // Corrected to getDriverName()
+        System.out.printf("Driver: %s\n", order.getDriver().getName()); // Corrected to getDriverName()
         System.out.printf("Delivery Address: %s\n", order.getCustomer().getCustomerAddress());
         System.out.printf("Order Pick Up Time: %s\n", order.getOrderPickUpTimeString());
         System.out.printf("Order Deliver Time: %s\n", order.getOrderDeliveredTimeString());
