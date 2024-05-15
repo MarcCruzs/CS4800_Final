@@ -13,13 +13,13 @@ public class OrderServices {
         this.orderBuilder = orderBuilder;
     }
 
-    public Order placeOrder(Restaurant restaurant, Customer customer, Driver driver, List<Meal> foodItemList){
+    public Order placeOrder(Restaurant restaurant, Customer customer, Driver driver, List<Meal> foodItemList, String orderCreationTime){
         // Set necessary attributes using the builder
         orderBuilder.setRestaurant(restaurant);
         orderBuilder.setCustomer(customer);
         orderBuilder.setDriver(driver);
         orderBuilder.setFoodItemList(foodItemList);
-        orderBuilder.setOrderCreationTime(LocalDateTime.now());
+        orderBuilder.setOrderCreationTime(orderCreationTime);
 
         // Get the order from the builder
         Order order = ((OrderBuilder) orderBuilder).getResult();

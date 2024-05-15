@@ -15,13 +15,13 @@ public class Order {
     private Customer customer;
     private Driver driver;
     private final List<Meal> foodItemList;
-    private LocalDateTime orderCreationTime;
-    private LocalDateTime orderPickUpTime;
-    private LocalDateTime orderDeliveredTime;
+    private String orderCreationTime;
+    private String orderPickUpTime;
+    private String orderDeliveredTime;
 
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
-    public Order(Restaurant restaurant, Customer customer, Driver driver, List<Meal> foodItemList, LocalDateTime orderCreationTime){
+    public Order(Restaurant restaurant, Customer customer, Driver driver, List<Meal> foodItemList, String orderCreationTime){
         this.restaurant = restaurant;
         this.customer = customer;
         this.driver = driver;
@@ -29,11 +29,11 @@ public class Order {
         this.orderCreationTime = orderCreationTime;
     }
 
-    public void setOrderPickUpTime(LocalDateTime orderPickUpTime) {
+    public void setOrderPickUpTime(String orderPickUpTime) {
         this.orderPickUpTime = orderPickUpTime;
     }
 
-    public void setOrderDeliveredTime(LocalDateTime orderDeliveredTime){
+    public void setOrderDeliveredTime(String orderDeliveredTime){
         this.orderDeliveredTime = orderDeliveredTime;
     }
     public Restaurant getRestaurant(){
@@ -59,17 +59,17 @@ public class Order {
         return totalPrice;
     }
     public String getOrderCreationTimeString(){
-        return orderCreationTime.format(formatter);
+        return orderCreationTime;
     }
     public String getOrderPickUpTimeString(){
         if(orderPickUpTime != null)
-            return orderPickUpTime.format(formatter);
+            return orderPickUpTime;
         else
             return "Not picked up yet";
     }
     public String getOrderDeliveredTimeString(){
         if(orderDeliveredTime != null)
-            return orderDeliveredTime.format(formatter);
+            return orderDeliveredTime;
         else
             return "Not delivered up yet";
     }
@@ -86,19 +86,19 @@ public class Order {
         this.driver = driver;
     }
 
-    public LocalDateTime getOrderCreationTime() {
+    public String getOrderCreationTime() {
         return orderCreationTime;
     }
 
-    public void setOrderCreationTime(LocalDateTime orderCreationTime) {
+    public void setOrderCreationTime(String orderCreationTime) {
         this.orderCreationTime = orderCreationTime;
     }
 
-    public LocalDateTime getOrderPickUpTime() {
+    public String getOrderPickUpTime() {
         return orderPickUpTime;
     }
 
-    public LocalDateTime getOrderDeliveredTime() {
+    public String getOrderDeliveredTime() {
         return orderDeliveredTime;
     }
 }

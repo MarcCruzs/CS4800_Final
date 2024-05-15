@@ -20,7 +20,7 @@ public class Main {
         OrderServices orderServices = new OrderServices(orderBuilder);
 
         //DeliveryService
-        DeliveryServices CPPDelivery = new DeliveryServices();
+        DeliveryServices CPPDelivery = DeliveryServices.getInstance();
 
         // Create a restaurant
         Restaurant restaurant = new ItalianRestaurant("Domenico", "5339 2nd Street", Counties.LA, RestaurantOperatingHours.FIRST_SHIFT);
@@ -38,14 +38,13 @@ public class Main {
         List<Meal> foodItems = new ArrayList<>();
         Meal pastaBolognese = new Meal("Pasta Bolognese", 40, new Carb.Pasta(), new Protein.Beef(), new Fat.OliveOil());
         List<String> toppings = Arrays.asList("Truffle Oil");
-        List<String> emptyToppings = new ArrayList<>();
         Meal cookedPastaBolognese = factory.makeMeal(pastaBolognese, customer.getcustomerDietaryRestriction(), toppings);
-
         foodItems.add(cookedPastaBolognese);
         // Add more food items as needed
 
         // Place the order
-        Order order = orderServices.placeOrder(restaurant, customer, driver, foodItems);
+        Order order = orderServices.placeOrder(restaurant, customer, driver, foodItems, "08:00 AM");
+        CPPDelivery.placeOrder(order, "Domenico");
 
         // Display Order Detail
         System.out.println("\nOrder placed successfully!");
@@ -57,11 +56,11 @@ public class Main {
         System.out.println("Items in order:");
         order.displayFoodItems();
 
+
         System.out.println("\n*** Delivery Detail ***");
         System.out.printf("Driver: %s\n", order.getDriver().getName()); // Corrected to getDriverName()
         System.out.printf("Delivery Address: %s\n", order.getCustomer().getCustomerAddress());
         System.out.printf("Order Pick Up Time: %s\n", order.getOrderPickUpTimeString());
         System.out.printf("Order Deliver Time: %s\n", order.getOrderDeliveredTimeString());
-
     }
 }

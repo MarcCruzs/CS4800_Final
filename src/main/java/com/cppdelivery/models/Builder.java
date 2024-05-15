@@ -10,6 +10,6 @@ public interface Builder {
     void setCustomer(Customer customer);
     void setDriver(Driver driver);
     void setFoodItemList(List<Meal> foodItemList);
-    void setOrderCreationTime(LocalDateTime orderCreationTime);
+    void setOrderCreationTime(String orderCreationTime);
 
 }
