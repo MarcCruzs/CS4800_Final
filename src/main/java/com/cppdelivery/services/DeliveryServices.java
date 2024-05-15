@@ -1,13 +1,10 @@
 package com.cppdelivery.services;
 
-import com.cppdelivery.models.Customer;
-import com.cppdelivery.models.Driver;
-import com.cppdelivery.models.Order;
+import com.cppdelivery.models.*;
 import com.cppdelivery.models.restaurants.Restaurant;
-import com.cppdelivery.utils.Counties;
-import com.cppdelivery.utils.DriverTimeShifts;
-import com.cppdelivery.utils.RestaurantOperatingHours;
+import com.cppdelivery.utils.*;
 
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -25,7 +22,7 @@ public class DeliveryServices {
     }
 
     public static DeliveryServices getInstance(){
-        if (deliveryServices == null){
+        if (deliveryServices == null) {
             deliveryServices = new DeliveryServices();
         }
         return deliveryServices;
@@ -49,16 +46,16 @@ public class DeliveryServices {
             return false;
         }
 
-        if (findRegisteredRestaurant(restaurantName) != null){
-            order.setRestaurant(findRegisteredRestaurant(restaurantName));
-        }
-        else {
+        Restaurant restaurant = findRegisteredRestaurant(restaurantName);
+        if (restaurant == null){
+            System.out.println("Restaurant not found: " + restaurantName);
             return false;
         }
 
+        order.setRestaurant(restaurant);
         order = fulfillOrder(order);
-
         if (order == null){
+            System.out.println("Order could not be fulfilled");
             return false;
         }
 
@@ -97,22 +94,17 @@ public class DeliveryServices {
     private void deliverOrder(Order order){
         Driver driver = order.getDriver();
 
-        LocalDateTime orderCreationTime = order.getOrderCreationTime();
+        String orderCreationTime = order.getOrderCreationTime();
         double averageDeliveryTime = driver.getAverageDeliverTime();
 
-        LocalDateTime orderDeliveredTime = addTime(orderCreationTime, averageDeliveryTime);
-        LocalDateTime orderPickUpTime = addTime(orderDeliveredTime, averageDeliveryTime);
+        // We assume it always take 30 minutes to prepare order
+        String orderPickUpTime = TimeUtils.addTime(orderCreationTime, 30);
+        String orderDeliveredTime = TimeUtils.addTime(orderPickUpTime, averageDeliveryTime);
 
         order.setOrderDeliveredTime(orderDeliveredTime);
         order.setOrderPickUpTime(orderPickUpTime);
 
         System.out.println("Order Delivered");
-    }
-
-    public LocalDateTime addTime(LocalDateTime time, double deliveryTime) {
-        long hours = (long) deliveryTime;
-        long minutes = (long) ((deliveryTime - hours) * 60);
-        return time.plusHours(hours).plusMinutes(minutes);
     }
 
     private ArrayList<Driver> findNearbyRegisteredDrivers(Counties county){

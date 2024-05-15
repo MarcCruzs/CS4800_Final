@@ -10,9 +10,9 @@ public class OrderBuilder implements Builder{
     private Customer customer;
     private Driver driver;
     private List<Meal> foodItemList;
-    private LocalDateTime orderCreationTime;
-    private LocalDateTime orderPickUpTime;
-    private LocalDateTime orderDeliveredTime;
+    private String orderCreationTime;
+    private String orderPickUpTime;
+    private String orderDeliveredTime;
 
     @Override
     public void setRestaurant(Restaurant restaurant) {
@@ -35,7 +35,7 @@ public class OrderBuilder implements Builder{
     }
 
     @Override
-    public void setOrderCreationTime(LocalDateTime orderCreationTime) {
+    public void setOrderCreationTime(String orderCreationTime) {
         this.orderCreationTime = orderCreationTime;
     }
 

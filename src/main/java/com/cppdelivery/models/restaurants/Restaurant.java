@@ -4,10 +4,7 @@ import com.cppdelivery.models.restaurants.food.*;
 import com.cppdelivery.services.DeliveryServices;
 import com.cppdelivery.utils.*;
 
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-
-import static com.cppdelivery.utils.TimeRangeChecker.isAvailableAtTime;
+import static com.cppdelivery.utils.TimeUtils.isAvailableAtTime;
 
 public class Restaurant {
     final private String name;
