@@ -4,10 +4,7 @@ import com.cppdelivery.services.DeliveryServices;
 import com.cppdelivery.utils.Counties;
 import com.cppdelivery.utils.DriverTimeShifts;
 
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-
-import static com.cppdelivery.utils.TimeRangeChecker.isAvailableAtTime;
+import static com.cppdelivery.utils.TimeUtils.isAvailableAtTime;
 
 public class Driver {
     private String name;

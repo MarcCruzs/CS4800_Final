@@ -13,8 +13,6 @@ public class Customer {
     private DeliveryServices CPPDeliveryServices;
 
 
-
-    //
     public Customer(String customerName, String customerAddress, Counties customerCounty, DietRestrictions customerDietaryRestriction){
         this.customerName = customerName;
         this.customerAddress = customerAddress;
