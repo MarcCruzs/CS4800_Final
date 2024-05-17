@@ -9,7 +9,6 @@ public interface Builder {
     void setRestaurant(Restaurant restaurant);
     void setCustomer(Customer customer);
     void setDriver(Driver driver);
-    void setFoodItemList(List<Meal> foodItemList);
     void setOrderCreationTime(String orderCreationTime);
 
 }

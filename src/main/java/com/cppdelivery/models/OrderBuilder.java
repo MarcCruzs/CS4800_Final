@@ -30,16 +30,11 @@ public class OrderBuilder implements Builder{
     }
 
     @Override
-    public void setFoodItemList(List<Meal> foodItemList) {
-        this.foodItemList = foodItemList;
-    }
-
-    @Override
     public void setOrderCreationTime(String orderCreationTime) {
         this.orderCreationTime = orderCreationTime;
     }
 
     public Order getResult(){
-        return new Order(restaurant, customer, driver, foodItemList, orderCreationTime);
+        return new Order(restaurant, customer, driver, orderCreationTime);
     }
 }
