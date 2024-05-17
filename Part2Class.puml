@@ -1,0 +1,83 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+
+class Movie {
+- movieFile: Mp4
+- movieDescription: String
+- movieRating: MovieRating
++ getMovieFile() : Mp4
++ getMovieDescription(): String
++ getMovieRating(): MovieRating
+}
+class User{
+
+}
+class UserProfile{
+    -userName: String
+    -password: String
+    -watchHistory: WatchHistory
+    +updateWatchHistory(): void
+}
+class MovieServer{
+-serverStatus: boolean
++getMovie(): Movie
++updateUserProfile(): void
++registerUser(): void
++verifyUserCredentials(): boolean
++getServerStatus(): boolean
+}
+class UserInterface{
+-selectedMovie: Movie
++selectMovie(): void
++browseMovies(): ArrayList<Movie>
++searchMovie(): Movie
+
+}
+class WatchHistory{
+-watchHistory: ArrayList<Movie>
++getWatchHistory(): ArrayList<Movie>
++addToWatchHistory(): void
++removeLastWatched(): void
++removeMovieByName(): void
+
+}
+class MoviePlayback{
+-isPlaying: boolean
+-currentPlaybackTime: String
+-playbackSpeed: double
+-settings: PlaybackSettings
++playMovie(): void
++pauseMovie(): void
++fastForward(): void
++rewind(): void
+}
+class PlaybackSettings{
+-closedCaptions: boolean
+-closedCaptionsLanguage: String
+-audioType: String
++toggleCaptions(): void
++changeCaptionsLanguage(): void
++changeAudioType(): void
+}
+class MovieRating {
+-averageScore: double
+-ratingsMap: HashMap<UserProfile, Integer>
++getUserMovieRating(): Integer
++getAverageScore(): double
+}
+MovieServer *-- UserProfile
+UserProfile *--> WatchHistory
+User --> UserInterface
+UserInterface --> UserProfile
+UserInterface --> MovieServer
+
+MovieServer o--> Movie
+UserInterface *--> MoviePlayback
+MoviePlayback *--> PlaybackSettings
+MoviePlayback --> Movie
+Movie *--> MovieRating
+
+
+@enduml
