@@ -18,6 +18,7 @@ class UserProfile{
     -userName: String
     -password: String
     -watchHistory: WatchHistory
+    - movieRatings: HashMap<Movie, rating:int>
     +updateWatchHistory(): void
 }
 class MovieServer{
@@ -33,6 +34,7 @@ class UserInterface{
 +selectMovie(): void
 +browseMovies(): ArrayList<Movie>
 +searchMovie(): Movie
++rateMovie(movie: Movie): void
 
 }
 class WatchHistory{
@@ -60,6 +62,7 @@ class PlaybackSettings{
 +toggleCaptions(): void
 +changeCaptionsLanguage(): void
 +changeAudioType(): void
++changeVideoSpeed(): void
 }
 class MovieRating {
 -averageScore: double
