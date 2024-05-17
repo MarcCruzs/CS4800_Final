@@ -1,4 +1,4 @@
-package com.cppdelivery.models.restaurants.food;
+package com.cppdelivery.models.food;
 
 import com.cppdelivery.utils.*;
 

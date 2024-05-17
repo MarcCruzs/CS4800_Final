@@ -1,12 +1,11 @@
-package com.cppdelivery.models.restaurants.food;
+package com.cppdelivery.models.food;
 
 public class Meal implements MealComponent {
     final private String name;
     final private Carb carb;
     final private Protein protein;
     final private Fat fat;
-    private double price;
-    // Constructor
+    final private double price;
     public Meal(String name, double price, Carb carb, Protein protein, Fat fat) {
         this.name = name;
         this.price = price;
@@ -14,10 +13,6 @@ public class Meal implements MealComponent {
         this.protein = protein;
         this.fat = fat;
     }
-    public String getName() {
-        return this.name;
-    }
-
     public Carb getCarb() {
         return this.carb;
     }
@@ -27,15 +22,12 @@ public class Meal implements MealComponent {
     public Fat getFat() {
         return this.fat;
     }
-
+    public String getName() {
+        return this.name;
+    }
     public double getPrice() {
         return this.price;
     }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-    @Override
     public void display() {
         System.out.println("$" + this.price + " " + this.name
                 + " [Carb: " + carb.getName()

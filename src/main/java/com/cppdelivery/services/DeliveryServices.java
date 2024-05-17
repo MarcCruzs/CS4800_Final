@@ -98,6 +98,7 @@ public class DeliveryServices {
         String orderCreationTime = order.getOrderCreationTime();
         double averageDeliveryTime = driver.getAverageDeliverTime();
         double preparationTime = restaurant.getPreparationTime();
+
         String orderPickUpTime = TimeUtils.addTime(orderCreationTime, preparationTime);
         String orderDeliveredTime = TimeUtils.addTime(orderPickUpTime, averageDeliveryTime);
 

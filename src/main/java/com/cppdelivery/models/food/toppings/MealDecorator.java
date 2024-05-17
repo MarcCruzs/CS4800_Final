@@ -1,4 +1,6 @@
-package com.cppdelivery.models.restaurants.food;
+package com.cppdelivery.models.food.toppings;
+
+import com.cppdelivery.models.food.Meal;
 
 public abstract class MealDecorator extends Meal {
     protected Meal decoratedMeal;

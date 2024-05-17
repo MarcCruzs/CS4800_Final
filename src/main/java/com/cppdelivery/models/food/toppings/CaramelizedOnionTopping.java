@@ -1,4 +1,6 @@
-package com.cppdelivery.models.restaurants.food;
+package com.cppdelivery.models.food.toppings;
+
+import com.cppdelivery.models.food.Meal;
 
 public class CaramelizedOnionTopping extends MealDecorator {
     private static final double CARAMELIZED_ONION_PRICE = 2.00;

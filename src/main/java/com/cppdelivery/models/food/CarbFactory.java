@@ -1,4 +1,4 @@
-package com.cppdelivery.models.restaurants.food;
+package com.cppdelivery.models.food;
 
 import com.cppdelivery.utils.*;
 public class CarbFactory {
@@ -12,8 +12,6 @@ public class CarbFactory {
         }
         return carbFactory;
     }
-
-    // Method to generate a Carb based on the given diet plan
     public Carb createCarb(DietRestrictions dietPlan, Carb defaultCarb){
         if (dietPlan == null || defaultCarb == null) {
             System.out.println("Diet plan or default carb cannot be null.");

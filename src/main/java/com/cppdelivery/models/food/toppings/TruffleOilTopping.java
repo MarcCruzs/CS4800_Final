@@ -1,4 +1,6 @@
-package com.cppdelivery.models.restaurants.food;
+package com.cppdelivery.models.food.toppings;
+
+import com.cppdelivery.models.food.Meal;
 
 public class TruffleOilTopping extends MealDecorator {
     private static final double TRUFFLE_OIL_PRICE = 3.00;

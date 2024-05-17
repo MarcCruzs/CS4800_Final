@@ -1,4 +1,4 @@
-package com.cppdelivery.models.restaurants.food;
+package com.cppdelivery.models.food;
 
 public abstract class Carb {
     public abstract String getName();

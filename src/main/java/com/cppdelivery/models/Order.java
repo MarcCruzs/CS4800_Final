@@ -2,12 +2,9 @@ package com.cppdelivery.models;
 // Min
 // Use Builder Class-- create OrderBuilder
 import com.cppdelivery.models.restaurants.Restaurant;
-import com.cppdelivery.models.restaurants.food.Meal;
+import com.cppdelivery.models.food.Meal;
 
-
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
@@ -19,22 +16,12 @@ public class Order {
     private String orderPickUpTime;
     private String orderDeliveredTime;
 
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
     public Order(Restaurant restaurant, Customer customer, Driver driver, List<Meal> foodItemList, String orderCreationTime){
         this.restaurant = restaurant;
         this.customer = customer;
         this.driver = driver;
         this.foodItemList = foodItemList;
         this.orderCreationTime = orderCreationTime;
-    }
-
-    public void setOrderPickUpTime(String orderPickUpTime) {
-        this.orderPickUpTime = orderPickUpTime;
-    }
-
-    public void setOrderDeliveredTime(String orderDeliveredTime){
-        this.orderDeliveredTime = orderDeliveredTime;
     }
     public Restaurant getRestaurant(){
         return restaurant;
@@ -97,8 +84,30 @@ public class Order {
     public String getOrderPickUpTime() {
         return orderPickUpTime;
     }
+    public void setOrderPickUpTime(String orderPickUpTime) {
+        this.orderPickUpTime = orderPickUpTime;
+    }
+
 
     public String getOrderDeliveredTime() {
         return orderDeliveredTime;
+    }
+    public void setOrderDeliveredTime(String orderDeliveredTime){
+        this.orderDeliveredTime = orderDeliveredTime;
+    }
+    public void displayOrder() {
+        System.out.println("Order Information:");
+        System.out.println("**** Order Details ****");
+        System.out.println("Restaurant: " + restaurant.getName());
+        System.out.println("Customer: " + customer.getCustomerName());
+        System.out.println("Food Items:");
+        displayFoodItems();
+        System.out.println("Total Price: " + getTotalPrice());
+
+        System.out.println("**** Delivery Details ****");
+        System.out.println("Driver: " + driver.getName());
+        System.out.println("Order Creation Time: " + getOrderCreationTimeString());
+        System.out.println("Order Pick-Up Time: " + getOrderPickUpTimeString());
+        System.out.println("Order Delivered Time: " + getOrderDeliveredTimeString());
     }
 }

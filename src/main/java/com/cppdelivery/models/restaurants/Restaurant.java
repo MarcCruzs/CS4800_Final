@@ -1,6 +1,7 @@
 package com.cppdelivery.models.restaurants;
 
-import com.cppdelivery.models.restaurants.food.*;
+import com.cppdelivery.models.food.Meal;
+import com.cppdelivery.models.food.*;
 import com.cppdelivery.services.DeliveryServices;
 import com.cppdelivery.utils.*;
 

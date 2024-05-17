@@ -1,6 +1,7 @@
-package com.cppdelivery.models.restaurants.food;
+package com.cppdelivery.models.food;
 
 import com.cppdelivery.utils.*;
+import com.cppdelivery.models.food.toppings.*;
 
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class MacronutrientFactory {
             switch (topping.toLowerCase()) {
                 case "truffle oil":
                     basicMeal = new TruffleOilTopping(basicMeal);
+                    break;
                 case "avocado":
                     basicMeal = new AvocadoTopping(basicMeal);
                     break;

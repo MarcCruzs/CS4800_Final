@@ -1,4 +1,4 @@
-package com.cppdelivery.models.restaurants.food;
+package com.cppdelivery.models.food;
 
 import com.cppdelivery.utils.*;
 
@@ -13,8 +13,6 @@ public class ProteinFactory {
         }
         return proteinFactory;
     }
-
-    // Method to generate a Protein based on the given diet plan
     public Protein createProtein(DietRestrictions dietPlan, Protein defaultProtein){
         if (dietPlan == null || defaultProtein == null) {
             System.out.println("Diet plan or default protein cannot be null.");
@@ -24,7 +22,12 @@ public class ProteinFactory {
             case NO_RESTRICTION:
                 return defaultProtein;
             case PALEO:
-                return defaultProtein;
+                if (defaultProtein.getName().equalsIgnoreCase("Tofu")
+                ) {
+                    return new Protein.Egg();
+                } else {
+                    return defaultProtein;
+                }
             case VEGAN:
                 if (defaultProtein.getName().equalsIgnoreCase("Chicken")
                         || defaultProtein.getName().equalsIgnoreCase("Beef")

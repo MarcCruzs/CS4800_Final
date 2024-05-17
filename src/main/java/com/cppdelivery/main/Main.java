@@ -1,10 +1,10 @@
 package com.cppdelivery.main;
+
 import com.cppdelivery.models.*;
-import com.cppdelivery.services.DeliveryServices;
-import com.cppdelivery.services.OrderServices;
+import com.cppdelivery.models.food.*;
+import com.cppdelivery.services.*;
 import com.cppdelivery.utils.*;
 import com.cppdelivery.models.restaurants.*;
-import com.cppdelivery.models.restaurants.food.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,8 +36,8 @@ public class Main {
 
         // Prepare food items list
         List<Meal> foodItems = new ArrayList<>();
-        Meal pastaBolognese = new Meal("Pasta Bolognese", 40, new Carb.Pasta(), new Protein.Beef(), new Fat.OliveOil());
-        List<String> toppings = Arrays.asList("Truffle Oil");
+        Meal pastaBolognese = new Meal("Pasta Bolognese", 20, new Carb.Pasta(), new Protein.Beef(), new Fat.OliveOil());
+        List<String> toppings = Arrays.asList("Truffle Oil", "Avocado");
         Meal cookedPastaBolognese = factory.makeMeal(pastaBolognese, customer.getcustomerDietaryRestriction(), toppings);
         foodItems.add(cookedPastaBolognese);
         // Add more food items as needed
@@ -47,20 +47,13 @@ public class Main {
         CPPDelivery.placeOrder(order, "Domenico");
 
         // Display Order Detail
-        System.out.println("\nOrder placed successfully!");
-        System.out.println("*** Order Summary ***");
-        System.out.printf("Restaurant: %s\n", order.getRestaurant().getName());
-        System.out.printf("Customer: %s\n", order.getCustomer().getCustomerName());
-        System.out.printf("Order Creation Time: %s\n", order.getOrderCreationTimeString());
-        System.out.printf("Total Price: %.2f\n", order.getTotalPrice()); // Assuming the price is a double
-        System.out.println("Items in order:");
-        order.displayFoodItems();
+        order.displayOrder();
 
 
-        System.out.println("\n*** Delivery Detail ***");
-        System.out.printf("Driver: %s\n", order.getDriver().getName()); // Corrected to getDriverName()
-        System.out.printf("Delivery Address: %s\n", order.getCustomer().getCustomerAddress());
-        System.out.printf("Order Pick Up Time: %s\n", order.getOrderPickUpTimeString());
-        System.out.printf("Order Deliver Time: %s\n", order.getOrderDeliveredTimeString());
+//        System.out.println("\n*** Delivery Detail ***");
+//        System.out.printf("Driver: %s\n", order.getDriver().getName()); // Corrected to getDriverName()
+//        System.out.printf("Delivery Address: %s\n", order.getCustomer().getCustomerAddress());
+//        System.out.printf("Order Pick Up Time: %s\n", order.getOrderPickUpTimeString());
+//        System.out.printf("Order Deliver Time: %s\n", order.getOrderDeliveredTimeString());
     }
 }

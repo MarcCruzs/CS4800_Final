@@ -1,8 +1,7 @@
 package com.cppdelivery.models;
 import com.cppdelivery.models.restaurants.Restaurant;
-import com.cppdelivery.models.restaurants.food.Meal;
+import com.cppdelivery.models.food.Meal;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 public class OrderBuilder implements Builder{

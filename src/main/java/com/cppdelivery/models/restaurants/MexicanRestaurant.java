@@ -1,6 +1,6 @@
 package com.cppdelivery.models.restaurants;
 
-import com.cppdelivery.models.restaurants.food.*;
+import com.cppdelivery.models.food.*;
 import com.cppdelivery.utils.*;
 
 public class MexicanRestaurant extends Restaurant {
