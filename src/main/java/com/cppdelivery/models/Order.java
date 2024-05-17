@@ -1,11 +1,15 @@
 package com.cppdelivery.models;
 // Min
 // Use Builder Class-- create OrderBuilder
+import com.cppdelivery.models.food.MacronutrientFactory;
 import com.cppdelivery.models.restaurants.Restaurant;
 import com.cppdelivery.models.food.Meal;
+import com.cppdelivery.services.DeliveryServices;
+import com.cppdelivery.utils.DietRestrictions;
 
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.ArrayList;
 
 public class Order {
     private Restaurant restaurant;
@@ -15,13 +19,24 @@ public class Order {
     private String orderCreationTime;
     private String orderPickUpTime;
     private String orderDeliveredTime;
-
-    public Order(Restaurant restaurant, Customer customer, Driver driver, List<Meal> foodItemList, String orderCreationTime){
+    private MacronutrientFactory macronutrientFactory;
+    public Order(Restaurant restaurant, Customer customer, Driver driver, String orderCreationTime){
         this.restaurant = restaurant;
         this.customer = customer;
         this.driver = driver;
-        this.foodItemList = foodItemList;
+        this.foodItemList = new ArrayList<>();
         this.orderCreationTime = orderCreationTime;
+        this.macronutrientFactory = MacronutrientFactory.getInstance();
+    }
+    public void addMealByName(String mealName, List<String> toppings) {
+        Meal meal = restaurant.getMealByName(mealName);
+        if (meal != null) {
+            DietRestrictions dietPlan = customer.getcustomerDietaryRestriction();
+            Meal cookedMeal = macronutrientFactory.makeMeal(meal, dietPlan, toppings);
+            foodItemList.add(cookedMeal);
+        } else {
+            System.out.println("Meal not found: " + mealName);
+        }
     }
     public Restaurant getRestaurant(){
         return restaurant;

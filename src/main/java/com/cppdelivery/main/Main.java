@@ -75,18 +75,43 @@ public class Main {
         driver7.register();
         driver8.register();
 
-        // Prepare food items list
-        List<Meal> foodItems = new ArrayList<>();
-        Meal pastaBolognese = new Meal("Pasta Bolognese", 20, new Carb.Pasta(), new Protein.Beef(), new Fat.OliveOil());
-        List<String> toppings = Arrays.asList("Truffle Oil", "Avocado");
-        Meal cookedPastaBolognese = factory.makeMeal(pastaBolognese, customer1.getcustomerDietaryRestriction(), toppings);
-        foodItems.add(cookedPastaBolognese);
+        // Prepare topping lists
+        List<String> allToppings = Arrays.asList("Truffle Oil", "Avocado", "Caramelized Onion");
+        List<String> truffleOilTopping = Arrays.asList("Truffle Oil");
+        List<String> avocadoTopping = Arrays.asList("Avocado");
+        List<String> caramelizedOnionTopping = Arrays.asList("Caramelized Onion");
 
-        // Place the order
-        Order order = orderServices.buildOrder(restaurant1, customer1, driver1, foodItems,"08:00 AM");
-        CPPDelivery.placeOrder(order, "Domenico");
+        // Scenario 1: Customer 1 places an order with 1 item at Restaurant 1
+        System.out.println("Scenario 1: Placing the order for Customer 1 with 1 item at Restaurant 1...");
+        Order order1 = orderServices.buildOrder(restaurant1, customer1, driver1, "08:00 AM");
+        order1.addMealByName("Bolognese Pasta", allToppings);
+        CPPDelivery.placeOrder(order1, "Domenico");
+        System.out.println("Displaying order details for Scenario 1...");
+        order1.displayOrder();
 
-        // Display Order Detail
-        order.displayOrder();
+        // Scenario 2: Customer 2 places an order at Restaurant 2 with 2 items with a specific topping
+        System.out.println("\nScenario 2: Placing the order for Customer 2 at Restaurant 2...");
+        Order order2 = orderServices.buildOrder(restaurant2, customer2, driver2, "05:00 AM");
+        order2.addMealByName("Beef Tacos", avocadoTopping);
+        order2.addMealByName("Breakfast Burritos", truffleOilTopping);
+        CPPDelivery.placeOrder(order2, "Enrique's");
+        System.out.println("Displaying order details for Scenario 2...");
+        order2.displayOrder();
+
+        // Scenario 3: Customer 3 places an order at Restaurant 3 with 3 items
+        System.out.println("\nScenario 3: Placing the order for Customer 3 at Restaurant 3...");
+        Order order3 = orderServices.buildOrder(restaurant3, customer3, driver3, "05:00 PM");
+        order3.addMealByName("Cheeseburger", truffleOilTopping);
+        order3.addMealByName("Chicken Salad", caramelizedOnionTopping);
+        order3.addMealByName("Meatloaf", Arrays.asList()); // no toppings
+        CPPDelivery.placeOrder(order3, "Lacquered");
+        System.out.println("Displaying order details for Scenario 3...");
+        order3.displayOrder();
+
+        // Scenario 4: Customer places an order at Restaurant 4 when restaurant is not open
+        System.out.println("\nScenario 4: Placing the order for Customer 4 at Restaurant 4 when restaurant is not open...");
+        Order order4 = orderServices.buildOrder(restaurant4, customer4, driver4, "07:00 PM");
+        order4.addMealByName("Risotto", truffleOilTopping);
+        CPPDelivery.placeOrder(order4, "La Sopranos");
     }
 }
