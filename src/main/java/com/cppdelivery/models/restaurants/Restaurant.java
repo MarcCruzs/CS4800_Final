@@ -11,15 +11,17 @@ public class Restaurant {
     final private String address;
     private Menu menu;
     private CuisineTypes cuisine;
+    final private double preparationTime;
     final private Counties county;
     final private RestaurantOperatingHours operatingHours;
     private DeliveryServices CPPDeliveryServices;
 
-    public Restaurant(String name, String address, Counties county, RestaurantOperatingHours operatingHours) {
+    public Restaurant(String name, String address, Counties county, RestaurantOperatingHours operatingHours, double preparationTime) {
         this.name = name;
         this.address = address;
         this.county = county;
         this.operatingHours = operatingHours;
+        this.preparationTime = preparationTime;
         this.CPPDeliveryServices = DeliveryServices.getInstance();
 
         this.menu = new Menu();
@@ -38,6 +40,9 @@ public class Restaurant {
     }
     public String getName() {
         return name;
+    }
+    public double getPreparationTime() {
+        return preparationTime;
     }
     public Meal getMealByName(String mealName) {
         return menu.getMealByName(mealName);

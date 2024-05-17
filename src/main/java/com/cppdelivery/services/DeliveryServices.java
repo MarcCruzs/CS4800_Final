@@ -93,12 +93,12 @@ public class DeliveryServices {
 
     private void deliverOrder(Order order){
         Driver driver = order.getDriver();
+        Restaurant restaurant = order.getRestaurant();
 
         String orderCreationTime = order.getOrderCreationTime();
         double averageDeliveryTime = driver.getAverageDeliverTime();
-
-        // We assume it always take 30 minutes to prepare order
-        String orderPickUpTime = TimeUtils.addTime(orderCreationTime, 30);
+        double preparationTime = restaurant.getPreparationTime();
+        String orderPickUpTime = TimeUtils.addTime(orderCreationTime, preparationTime);
         String orderDeliveredTime = TimeUtils.addTime(orderPickUpTime, averageDeliveryTime);
 
         order.setOrderDeliveredTime(orderDeliveredTime);

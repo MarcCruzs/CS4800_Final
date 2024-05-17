@@ -23,7 +23,7 @@ public class Main {
         DeliveryServices CPPDelivery = DeliveryServices.getInstance();
 
         // Create a restaurant
-        Restaurant restaurant = new ItalianRestaurant("Domenico", "5339 2nd Street", Counties.LA, RestaurantOperatingHours.FIRST_SHIFT);
+        Restaurant restaurant = new ItalianRestaurant("Domenico", "5339 2nd Street", Counties.LA, RestaurantOperatingHours.FIRST_SHIFT, 40);
         restaurant.register();
 
         // Create a customer

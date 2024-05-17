@@ -4,8 +4,8 @@ import com.cppdelivery.models.restaurants.food.*;
 import com.cppdelivery.utils.*;
 
 public class AmericanRestaurant extends Restaurant {
-    public AmericanRestaurant(String name, String address, Counties county, RestaurantOperatingHours operatingHours) {
-        super(name, address, county, operatingHours);
+    public AmericanRestaurant(String name, String address, Counties county, RestaurantOperatingHours operatingHours, double preparationTime) {
+        super(name, address, county, operatingHours, preparationTime);
         setCuisine(CuisineTypes.AMERICAN);
     }
     @Override
