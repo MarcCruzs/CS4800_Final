@@ -83,7 +83,7 @@ public class Main {
         foodItems.add(cookedPastaBolognese);
 
         // Place the order
-        Order order = orderServices.placeOrder(restaurant1, customer1, driver1, foodItems, "08:00 AM");
+        Order order = orderServices.buildOrder(restaurant1, customer1, driver1, foodItems,"08:00 AM");
         CPPDelivery.placeOrder(order, "Domenico");
 
         // Display Order Detail

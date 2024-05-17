@@ -28,10 +28,19 @@ public class Meal implements MealComponent {
     public double getPrice() {
         return this.price;
     }
-    public void display() {
-        System.out.println("$" + this.price + " " + this.name
-                + " [Carb: " + carb.getName()
+    @Override
+    public void displayName() {
+        System.out.println("$" + this.getPrice() + " " + this.getName());
+    }
+    public void displayMacronutrients() {
+        System.out.println("Ingredients:"
+                + "[Carb: " + carb.getName()
                 + "; Protein: " + protein.getName()
                 + "; Fat: " + fat.getName() + "]");
+    }
+
+    public void display() {
+        displayName();
+        displayMacronutrients();
     }
 }

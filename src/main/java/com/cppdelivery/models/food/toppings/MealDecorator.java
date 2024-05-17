@@ -17,4 +17,7 @@ public abstract class MealDecorator extends Meal {
     public double getPrice() {
         return decoratedMeal.getPrice();
     }
+    public void displayName() {
+        System.out.println("$" + this.getPrice() + " " + this.getName());
+    }
 }

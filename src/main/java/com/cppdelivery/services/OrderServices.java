@@ -12,7 +12,7 @@ public class OrderServices {
         this.orderBuilder = orderBuilder;
     }
 
-    public Order placeOrder(Restaurant restaurant, Customer customer, Driver driver, List<Meal> foodItemList, String orderCreationTime){
+    public Order buildOrder(Restaurant restaurant, Customer customer, Driver driver, List<Meal> foodItemList, String orderCreationTime){
         orderBuilder.setRestaurant(restaurant);
         orderBuilder.setCustomer(customer);
         orderBuilder.setDriver(driver);
