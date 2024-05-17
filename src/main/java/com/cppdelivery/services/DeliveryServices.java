@@ -3,10 +3,6 @@ package com.cppdelivery.services;
 import com.cppdelivery.models.*;
 import com.cppdelivery.models.restaurants.Restaurant;
 import com.cppdelivery.utils.*;
-
-import java.sql.Time;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class DeliveryServices {
@@ -14,6 +10,7 @@ public class DeliveryServices {
     private ArrayList<Driver> registeredDrivers;
     private ArrayList<Customer> registeredCustomers;
     private ArrayList<Restaurant> registeredRestaurants;
+
 
     public DeliveryServices() {
         this.registeredDrivers = new ArrayList<>();
@@ -53,7 +50,7 @@ public class DeliveryServices {
         }
 
         order.setRestaurant(restaurant);
-        order = fulfillOrder(order);
+        order = checkOrder(order);
         if (order == null){
             System.out.println("Order could not be fulfilled");
             return false;
@@ -64,7 +61,7 @@ public class DeliveryServices {
         return true;
     }
 
-    public Order fulfillOrder(Order order){
+    public Order checkOrder(Order order){
         ArrayList<Driver> nearbyDrivers = findNearbyRegisteredDrivers(order.getCustomer().getCustomerCounty());
 
         if (nearbyDrivers == null || nearbyDrivers.isEmpty()) {
@@ -133,6 +130,14 @@ public class DeliveryServices {
 
     public boolean isCustomerRegistered(Customer customer){
         return registeredCustomers.contains(customer);
+    }
+
+    public boolean isDriverRegistered(Driver driver){
+        return registeredDrivers.contains(driver);
+    }
+
+    public boolean isRestaurantRegistered(Restaurant restaurant){
+        return registeredRestaurants.contains(restaurant);
     }
 
 }
