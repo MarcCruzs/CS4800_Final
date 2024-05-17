@@ -33,6 +33,5 @@ public class Meal implements MealComponent {
                 + " [Carb: " + carb.getName()
                 + "; Protein: " + protein.getName()
                 + "; Fat: " + fat.getName() + "]");
-        System.out.println("--------------------------------");
     }
 }
