@@ -42,6 +42,13 @@ public class Restaurant {
     public String getName() {
         return name;
     }
+    public String getAddress() {
+        return address;
+    }
+    public Counties getCounty() {
+        return county;
+    }
+
     public double getPreparationTime() {
         return preparationTime;
     }
@@ -69,6 +76,4 @@ public class Restaurant {
     public void register(){
         CPPDeliveryServices.registerRestaurant(this);
     }
-
-
 }
